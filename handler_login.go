@@ -2,8 +2,9 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/zuekveer/Chirpy/internal/auth"
 	"net/http"
+
+	"github.com/zuekveer/Chirpy/internal/auth"
 )
 
 func (cfg *apiConfig) handlerLogin(w http.ResponseWriter, r *http.Request) {
