@@ -1,4 +1,4 @@
-module github.com/zuekveer/Chirpy/apikey
+module github.com/zuekveer/Chirpy/sortchirp
 
 go 1.22.1
 

@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/zuekveer/Chirpy/apikey/internal/auth"
+	"github.com/zuekveer/Chirpy/sortchirp/internal/auth"
 )
 
 func (cfg *apiConfig) handlerLogin(w http.ResponseWriter, r *http.Request) {

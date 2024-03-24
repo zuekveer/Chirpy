@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/zuekveer/Chirpy/apikey/internal/auth"
+	"github.com/zuekveer/Chirpy/sortchirp/internal/auth"
 )
 
 type Chirp struct {
