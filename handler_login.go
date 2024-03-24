@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"net/http"
+	"time"
 
 	"github.com/zuekveer/Chirpy/internal/auth"
 )
@@ -14,6 +15,8 @@ func (cfg *apiConfig) handlerLogin(w http.ResponseWriter, r *http.Request) {
 	}
 	type response struct {
 		User
+		Token        string `json:"token"`
+		RefreshToken string `json:"refresh_token"`
 	}
 
 	decoder := json.NewDecoder(r.Body)
@@ -36,10 +39,34 @@ func (cfg *apiConfig) handlerLogin(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	accessToken, err := auth.MakeJWT(
+		user.ID,
+		cfg.jwtSecret,
+		time.Hour,
+		auth.TokenTypeAccess,
+	)
+	if err != nil {
+		respondWithError(w, http.StatusInternalServerError, "Couldn't create access JWT")
+		return
+	}
+
+	refreshToken, err := auth.MakeJWT(
+		user.ID,
+		cfg.jwtSecret,
+		time.Hour*24*30*6,
+		auth.TokenTypeRefresh,
+	)
+	if err != nil {
+		respondWithError(w, http.StatusInternalServerError, "Couldn't create refresh JWT")
+		return
+	}
+
 	respondWithJSON(w, http.StatusOK, response{
 		User: User{
 			ID:    user.ID,
 			Email: user.Email,
 		},
+		Token:        accessToken,
+		RefreshToken: refreshToken,
 	})
 }
