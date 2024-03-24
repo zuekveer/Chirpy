@@ -5,8 +5,8 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/zuekveer/Chirpy/internal/auth"
-	"github.com/zuekveer/Chirpy/internal/database"
+	"github.com/zuekveer/Chirpy/refresh/internal/auth"
+	"github.com/zuekveer/Chirpy/refresh/internal/database"
 )
 
 type User struct {

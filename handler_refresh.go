@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/zuekveer/Chirpy/internal/auth"
+	"github.com/zuekveer/Chirpy/refresh/internal/auth"
 )
 
 func (cfg *apiConfig) handlerRefresh(w http.ResponseWriter, r *http.Request) {

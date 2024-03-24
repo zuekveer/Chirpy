@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/joho/godotenv"
-	"github.com/zuekveer/Chirpy/internal/database"
+	"github.com/zuekveer/Chirpy/refresh/internal/database"
 )
 
 type apiConfig struct {
