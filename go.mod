@@ -1,4 +1,4 @@
-module github.com/zuekveer/Chirpy/refresh
+module github.com/zuekveer/Chirpy/apikey
 
 go 1.22.1
 

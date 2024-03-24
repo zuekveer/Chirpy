@@ -5,14 +5,15 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/zuekveer/Chirpy/refresh/internal/auth"
-	"github.com/zuekveer/Chirpy/refresh/internal/database"
+	"github.com/zuekveer/Chirpy/apikey/internal/auth"
+	"github.com/zuekveer/Chirpy/apikey/internal/database"
 )
 
 type User struct {
-	ID       int    `json:"id"`
-	Email    string `json:"email"`
-	Password string `json:"-"`
+	ID          int    `json:"id"`
+	Email       string `json:"email"`
+	Password    string `json:"-"`
+	IsChirpyRed bool   `json:"is_chirpy_red"`
 }
 
 func (cfg *apiConfig) handlerUsersCreate(w http.ResponseWriter, r *http.Request) {
@@ -51,8 +52,9 @@ func (cfg *apiConfig) handlerUsersCreate(w http.ResponseWriter, r *http.Request)
 
 	respondWithJSON(w, http.StatusCreated, response{
 		User: User{
-			ID:    user.ID,
-			Email: user.Email,
+			ID:          user.ID,
+			Email:       user.Email,
+			IsChirpyRed: user.IsChirpyRed,
 		},
 	})
 }

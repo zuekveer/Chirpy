@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/zuekveer/Chirpy/refresh/internal/auth"
+	"github.com/zuekveer/Chirpy/apikey/internal/auth"
 )
 
 func (cfg *apiConfig) handlerLogin(w http.ResponseWriter, r *http.Request) {
@@ -63,8 +63,9 @@ func (cfg *apiConfig) handlerLogin(w http.ResponseWriter, r *http.Request) {
 
 	respondWithJSON(w, http.StatusOK, response{
 		User: User{
-			ID:    user.ID,
-			Email: user.Email,
+			ID:          user.ID,
+			Email:       user.Email,
+			IsChirpyRed: user.IsChirpyRed,
 		},
 		Token:        accessToken,
 		RefreshToken: refreshToken,
